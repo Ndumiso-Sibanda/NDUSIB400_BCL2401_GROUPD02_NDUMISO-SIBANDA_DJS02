@@ -20,5 +20,14 @@ form.addEventListener("submit", (event) => {
   result.classList.add("error-message");
   return;
  }
- result.innerText = dividend / divider;
+ // Check for division by zero
+ if (divider == 0) {
+  result.innerText =
+   "Division by zero is not allowed. Please enter a valid divider.";
+  result.classList.add("error-message");
+  return;
+ }
+ // Perform the division
+ result.innerText = Math.floor(dividend / divider);
+ result.classList.remove("error-message");
 });
