@@ -11,6 +11,7 @@ form.addEventListener("submit", (event) => {
   result.classList.add("error-message");
   result.innerText =
    "Division not performed. Both values are required in inputs. Try again.";
+  console.error("An error occurred: Both dividend and divider are required.");
   return;
  }
 
@@ -19,6 +20,7 @@ form.addEventListener("submit", (event) => {
  if (!validInputRegex.test(dividend) || !validInputRegex.test(divider)) {
   result.classList.add("critical-error");
   result.innerText = "Something critical went wrong. Please reload the page.";
+  console.error("An error occurred: Invalid input characters.");
   return;
  }
 
