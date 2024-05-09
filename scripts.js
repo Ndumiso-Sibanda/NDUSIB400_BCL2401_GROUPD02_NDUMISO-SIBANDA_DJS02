@@ -14,5 +14,11 @@ form.addEventListener("submit", (event) => {
   return;
  }
 
+ // Check if inputs are valid numbers
+ if (isNaN(dividend) || isNaN(divider)) {
+  result.innerText = "Invalid inputs. Enter valid numbers.";
+  result.classList.add("error-message");
+  return;
+ }
  result.innerText = dividend / divider;
 });
