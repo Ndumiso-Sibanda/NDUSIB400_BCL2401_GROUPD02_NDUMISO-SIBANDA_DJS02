@@ -4,30 +4,34 @@ const criticalErrorDiv = document.querySelector('.critical-error');
 
 form.addEventListener("submit", (event) => {
   event.preventDefault();
+
   const entries = new FormData(event.target);
   const { dividend, divider } = Object.fromEntries(entries);
 
-  //Checks if the input fields are empty, and if they are, it sends out a message to fill them in.
+  // Check if input fields are empty
   if (!dividend || !divider) {
-    result.innerText =
-      "Division not performed. Both values are required in inputs. Try again";
+    result.innerText = "Division not performed. Both values are required in inputs. Try again";
+    result.classList.add("error-message");
     return;
   }
 
+  // Check for division by zero
   if (divider === "0") {
-    result.innerText =
-      "Division not performed. Invalid number provided. Try again";
-      result.classList.add("error-message")// Applies css to the results of the if statement.
-    console.error("Division by zero not permitted", new Error().stack);//Throws error to console, so the developer and user know exactly what the issue is.
-    return; //Prevents program from crashing by stopping the function from calculating with a 0 in the equation.
+    result.innerText = "Division not performed. Invalid number provided. Try again";
+    result.classList.add("error-message");
+    console.error("Division by zero not permitted", new Error().stack);
+    return;
   }
 
-  if (isNaN(dividend) || isNaN(divider)) { //Checks if the input is not a number.
-   criticalErrorDiv.style.display = 'block'; //Prompts the css to display.
+  // Check if inputs are valid numbers
+  if (isNaN(dividend) || isNaN(divider)) {
+    criticalErrorDiv.style.display = 'block';
     console.error("Invalid input provided", new Error().stack);
     return;
   }
 
-  const finalCalculation = Math.trunc(dividend / divider); //Rounds off the result and a variable is created for readability.
+  // Perform the division and display the result
+  const finalCalculation = Math.trunc(dividend / divider);
   result.innerText = finalCalculation;
+  result.classList.remove("error-message");
 });
