@@ -6,9 +6,9 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Whole Number Division</title>
     <script src="./scripts.js" defer type="module"></script>
-    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="styles.css" />
   </head>
-  
+
   <body>
     <h1>Whole Number Division</h1>
     <form data-form="data-form">
@@ -24,5 +24,9 @@
     </form>
     <hr />
     <div data-result="data-result">No calculation performed</div>
+    <!--div to store the critical error display to minimise clutter in JavaScript file for readability-->
+    <div class="critical-error" style="display: none;"> 
+      Something critical went wrong. Please reload the page.
+    </div>
   </body>
 </html>
